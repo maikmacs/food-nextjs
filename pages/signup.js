@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import Router from 'next/router';
 import api from '../services/api';
 
 import Layout from '../components/Layout';
@@ -13,12 +14,19 @@ class signup extends Component {
       email: 'test@test.com',
       birth_date: '1990-06-19',
       password: 'test123',
-      username: 'test',
       gender: 'male',
       phone: '123456789',
       password_confirm: 'test123'
     };
   }
+
+  chekInput = event => {
+    let { name, value } = event.target;
+
+    this.setState({
+      [name]: value
+    });
+  };
 
   chekInput = event => {
     let { name, value } = event.target;
@@ -39,8 +47,7 @@ class signup extends Component {
       api
         .createUser(this.state)
         .then(resp => {
-          console.log(resp.data);
-          //this.props.history.push('/login');
+          Router.push('/login');
         })
         .catch(err => {
           console.log(err);
@@ -61,6 +68,7 @@ class signup extends Component {
               id={'name'}
               placeholder="Nombre"
               value={this.state.name}
+              onChange={this.chekInput}
             />
           </FormGroup>
           <FormGroup>
@@ -71,6 +79,7 @@ class signup extends Component {
               id={'last_name'}
               placeholder="Apellido"
               value={this.state.last_name}
+              onChange={this.chekInput}
             />
           </FormGroup>
           <FormGroup>
@@ -81,6 +90,7 @@ class signup extends Component {
               id={'email'}
               placeholder="Email"
               value={this.state.email}
+              onChange={this.chekInput}
             />
           </FormGroup>
           <FormGroup>
@@ -91,6 +101,7 @@ class signup extends Component {
               id={'birth_date'}
               placeholder="Fecha de Nacimiento"
               value={this.state.birth_date}
+              onChange={this.chekInput}
             />
           </FormGroup>
           <FormGroup>
@@ -98,19 +109,10 @@ class signup extends Component {
             <Input
               type="text"
               name={'phone'}
-              id={'name'}
+              id={'phone'}
               placeholder="Telefono"
               value={this.state.phone}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for={'username'}>Usuario</Label>
-            <Input
-              type="test"
-              name={'username'}
-              id={'username'}
-              placeholder="Usuario"
-              value={this.state.username}
+              onChange={this.chekInput}
             />
           </FormGroup>
           <FormGroup>
@@ -121,6 +123,7 @@ class signup extends Component {
               id={'password'}
               placeholder="Contraseña"
               value={this.state.password}
+              onChange={this.chekInput}
             />
           </FormGroup>
           <FormGroup>
@@ -131,6 +134,7 @@ class signup extends Component {
               id={'password_confirm'}
               placeholder="Confirmar Contraseña"
               value={this.state.password_confirm}
+              onChange={this.chekInput}
             />
           </FormGroup>
 
