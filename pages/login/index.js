@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import { connect } from 'react-redux';
-import Router from 'next/router';
 
-import { loginRequest } from './actions';
+import { loginRequest } from '../../redux/actions/auth';
 
 import Layout from '../../components/Layout';
 

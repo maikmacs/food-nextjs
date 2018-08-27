@@ -15,7 +15,7 @@ import {
   LOGIN_REQUEST,
   REQUEST_ERROR,
   RESET_REQUEST
-} from './constants';
+} from '../constants/auth';
 
 import api from '../../services/api';
 import Router from 'next/router';
@@ -40,6 +40,26 @@ export function* login(action) {
   }
 }
 
+export function* register(action) {
+  const { payload } = action;
+  yield put({ type: SENDING_REQUEST, sending: true });
+
+  try {
+    const response = yield call(api.createUser, payload);
+    localStorage.setItem('food_token', response.data.token);
+
+    Router.push('/login');
+  } catch (error) {
+    yield all([
+      put({ type: REQUEST_ERROR, error: error.message }),
+      put({ type: SENDING_REQUEST, sending: false })
+    ]);
+  }
+}
+
 export default function* authSaga() {
-  yield all([takeLatest(LOGIN_REQUEST, login)]);
+  yield all([
+    takeLatest(REGISTER_REQUEST, register),
+    takeLatest(LOGIN_REQUEST, login)
+  ]);
 }

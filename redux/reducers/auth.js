@@ -4,7 +4,7 @@ import {
   SENDING_REQUEST,
   REQUEST_ERROR,
   CLEAR_ERROR
-} from './constants';
+} from '../constants/auth';
 
 const initialState = {
   token: '',

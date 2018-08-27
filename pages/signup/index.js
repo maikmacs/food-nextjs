@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
-import Router from 'next/router';
+import { connect } from 'react-redux';
 //import api from '../../services/api';
+
+import { registerRequest } from '../../redux/actions/auth';
 
 import Layout from '../../components/Layout';
 
@@ -44,6 +46,7 @@ class signup extends Component {
     e.preventDefault();
 
     if (this.checkPassword()) {
+      this.props.registerRequest(this.state);
       // api
       //   .createUser(this.state)
       //   .then(resp => {
@@ -145,4 +148,13 @@ class signup extends Component {
   }
 }
 
-export default signup;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  registerRequest: payload => dispatch(registerRequest(payload))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(signup);
