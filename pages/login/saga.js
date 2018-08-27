@@ -18,16 +18,25 @@ import {
 } from './constants';
 
 import api from '../../services/api';
+import Router from 'next/router';
 
 export function* login(action) {
   const { payload } = action;
+  yield put({ type: SENDING_REQUEST, sending: true });
 
   try {
     const response = yield call(api.loginUser, payload);
 
     yield put({ type: SET_AUTH, payload: response.data.token });
+    if (response.data.token) {
+      console.log('Login');
+      Router.push('/');
+    }
   } catch (error) {
-    console.log(error);
+    yield all([
+      put({ type: REQUEST_ERROR, error: error.message }),
+      put({ type: SENDING_REQUEST, sending: false })
+    ]);
   }
 }
 

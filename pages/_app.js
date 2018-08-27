@@ -6,6 +6,9 @@ import withRedux from 'next-redux-wrapper';
 import withReduxSaga from 'next-redux-saga';
 import configureStore from '../redux/store';
 
+import { ApolloProvider } from 'react-apollo';
+import client from '../services/graphql';
+
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const pageProps = Component.getInitialProps
@@ -19,9 +22,11 @@ class MyApp extends App {
     const { Component, pageProps, store } = this.props;
     return (
       <Container>
-        <Provider store={store}>
-          <Component {...pageProps} />
-        </Provider>
+        <ApolloProvider client={client}>
+          <Provider store={store}>
+            <Component {...pageProps} />
+          </Provider>
+        </ApolloProvider>
       </Container>
     );
   }

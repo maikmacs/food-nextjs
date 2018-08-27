@@ -1,5 +1,6 @@
 import axios from 'axios';
-//import baseURL from './config';
+import { BASE_URL } from '../config';
+
 const baseURL = 'https://sindelantal-backend.herokuapp.com/';
 
 const api = axios.create({
