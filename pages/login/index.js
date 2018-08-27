@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { connect } from 'react-redux';
 import Router from 'next/router';
-import api from '../services/api';
 
-import Layout from '../components/Layout';
+import { loginRequest } from './actions';
+
+import Layout from '../../components/Layout';
 
 class login extends Component {
   constructor(props) {
@@ -25,16 +27,7 @@ class login extends Component {
 
   submitForm = e => {
     e.preventDefault();
-    api
-      .loginUser(this.state)
-      .then(resp => {
-        //localStorage.setItem('food_token', resp.data.token);
-        console.log(resp.data.token);
-        // this.props.history.push('/');
-      })
-      .catch(err => {
-        console.log(err.response.data);
-      });
+    this.props.loginRequest(this.state);
   };
 
   render() {
@@ -70,4 +63,13 @@ class login extends Component {
   }
 }
 
-export default login;
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  loginRequest: payload => dispatch(loginRequest(payload))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(login);
