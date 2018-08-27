@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
 import Router from 'next/router';
-import api from '../services/api';
+//import api from '../../services/api';
 
-import Layout from '../components/Layout';
+import Layout from '../../components/Layout';
 
 class signup extends Component {
   constructor(props) {
@@ -44,14 +44,14 @@ class signup extends Component {
     e.preventDefault();
 
     if (this.checkPassword()) {
-      api
-        .createUser(this.state)
-        .then(resp => {
-          Router.push('/login');
-        })
-        .catch(err => {
-          console.log(err);
-        });
+      // api
+      //   .createUser(this.state)
+      //   .then(resp => {
+      //     Router.push('/login');
+      //   })
+      //   .catch(err => {
+      //     console.log(err);
+      //   });
     } else {
       alert('Los Passwords no coinciden');
     }
