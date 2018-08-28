@@ -7,7 +7,7 @@ import RestaurantCard from './RestaurantCard';
 
 const GET_RESTAURANTS = gql`
   query {
-    queryAllStores {
+    allStores {
       _id
       name
     }
@@ -24,7 +24,7 @@ class RestaurantList extends Component {
         // }
         return (
           <div className="row justify-content-center mt-5">
-            {data.queryAllStores.map((store, index) => (
+            {data.allStores.map((store, index) => (
               <div className="col-md-3 col-lg-2" key={index}>
                 <RestaurantCard store={store} />
               </div>

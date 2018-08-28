@@ -13,7 +13,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
-import Router from 'next/router';
+import { Link } from '../../routes';
 
 class NavbarHeader extends Component {
   constructor(props) {
@@ -38,14 +38,14 @@ class NavbarHeader extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>
               <NavItem>
-                <NavLink onClick={() => Router.push('/login')}>
+                <Link route="login">
                   <Button color="primary">Iniciar Sesión</Button>
-                </NavLink>
+                </Link>
               </NavItem>
               <NavItem>
-                <NavLink onClick={() => Router.push('/signup')}>
+                <Link route="signup">
                   <Button color="secondary">Regístrarse</Button>
-                </NavLink>
+                </Link>
               </NavItem>
             </Nav>
           </Collapse>

@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from '../../../../../routes';
 
 class RestaurantCard extends Component {
   constructor(props) {
@@ -13,7 +14,9 @@ class RestaurantCard extends Component {
   render() {
     return (
       <div>
-        <span>{this.state.name}</span>
+        <Link route="restaurant" params={{ id: this.state.id }}>
+          <span>{this.state.name}</span>
+        </Link>
       </div>
     );
   }
