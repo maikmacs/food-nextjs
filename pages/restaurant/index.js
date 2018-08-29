@@ -1,5 +1,14 @@
 import React, { Component } from 'react';
-import { Card, Row, Col, CardBody, CardTitle } from 'reactstrap';
+import {
+  Card,
+  Row,
+  Col,
+  CardBody,
+  CardTitle,
+  CardSubtitle,
+  CardImg,
+  Button
+} from 'reactstrap';
 
 import Link from '../../routes';
 import { connect } from 'react-redux';
@@ -46,8 +55,8 @@ class Restaurant extends Component {
             let restaurant = data.singleStore;
             console.log(restaurant);
             return (
-              <div>
-                <Row style={{ backgroundColor: '#e2e2e2' }}>
+              <main>
+                <Row>
                   <Col>
                     <img src={restaurant.picture} alt={restaurant.name} />
                   </Col>
@@ -58,15 +67,30 @@ class Restaurant extends Component {
                 </Row>
 
                 <Row>
-                  {restaurant.products.map((products, index) => (
-                    <Card key={index}>
-                      <CardBody>
-                        <CardTitle>{products.name}</CardTitle>
-                      </CardBody>
-                    </Card>
-                  ))}
+                  <Col>
+                    <Row>
+                      {restaurant.products.map((products, index) => (
+                        <Col sm="6">
+                          <Card key={index}>
+                            <CardImg
+                              top
+                              width="100%"
+                              src={products.picture}
+                              alt="Card image cap"
+                            />
+                            <CardBody>
+                              <CardTitle>{products.name}</CardTitle>
+                              <CardSubtitle>$ {products.price}</CardSubtitle>
+                              <Button>Agregar</Button>
+                            </CardBody>
+                          </Card>
+                        </Col>
+                      ))}
+                    </Row>
+                  </Col>
+                  <Col>CART</Col>
                 </Row>
-              </div>
+              </main>
             );
           }}
         </Query>
