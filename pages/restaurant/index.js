@@ -10,6 +10,9 @@ import {
   Button
 } from 'reactstrap';
 
+import { AddToCart } from 'react-redux-shopping-cart';
+import Cart from '../../components/Cart';
+
 import Link from '../../routes';
 import { connect } from 'react-redux';
 
@@ -28,6 +31,7 @@ const GET_RESTAURANT = gql`
         description
       }
       products {
+        _id
         name
         price
         picture
@@ -53,7 +57,7 @@ class Restaurant extends Component {
             if (loading) return <h4>Loading..</h4>;
             if (error) return <h4>No Hay Casa</h4>;
             let restaurant = data.singleStore;
-            console.log(restaurant);
+            //console.log(restaurant);
             return (
               <main>
                 <Row>
@@ -69,26 +73,36 @@ class Restaurant extends Component {
                 <Row>
                   <Col>
                     <Row>
-                      {restaurant.products.map((products, index) => (
-                        <Col sm="6">
-                          <Card key={index}>
-                            <CardImg
-                              top
-                              width="100%"
-                              src={products.picture}
-                              alt="Card image cap"
-                            />
-                            <CardBody>
-                              <CardTitle>{products.name}</CardTitle>
-                              <CardSubtitle>$ {products.price}</CardSubtitle>
-                              <Button>Agregar</Button>
-                            </CardBody>
-                          </Card>
-                        </Col>
-                      ))}
+                      {restaurant.products.map((products, index) => {
+                        const item = {
+                          id: products._id,
+                          name: products.name,
+                          price: products.price,
+                          qty: 1
+                        };
+                        return (
+                          <Col sm="6" key={index}>
+                            <Card>
+                              <CardImg
+                                top
+                                width="100%"
+                                src={products.picture}
+                                alt="Card image cap"
+                              />
+                              <CardBody>
+                                <CardTitle>{products.name}</CardTitle>
+                                <CardSubtitle>$ {products.price}</CardSubtitle>
+                                <AddToCart item={item} />
+                              </CardBody>
+                            </Card>
+                          </Col>
+                        );
+                      })}
                     </Row>
                   </Col>
-                  <Col>CART</Col>
+                  <Col>
+                    <Cart />
+                  </Col>
                 </Row>
               </main>
             );
