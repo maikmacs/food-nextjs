@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { Link, Router } from '../../routes';
 import Layout from '../../components/Layout';
 
 class index extends Component {
@@ -7,6 +7,7 @@ class index extends Component {
     return (
       <Layout>
         <div>Index</div>
+        <Link route="restaurants">Lista de Restaurantes</Link>
       </Layout>
     );
   }

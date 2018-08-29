@@ -13,7 +13,7 @@ import {
   DropdownMenu,
   DropdownItem
 } from 'reactstrap';
-import { Link } from '../../routes';
+import { Link, Router } from '../../routes';
 
 class NavbarHeader extends Component {
   constructor(props) {
@@ -33,7 +33,13 @@ class NavbarHeader extends Component {
     return (
       <div>
         <Navbar color="light" light expand="md">
-          <NavbarBrand onClick={() => Router.push('/')}>Food</NavbarBrand>
+          <NavbarBrand
+            onClick={() => {
+              Router.pushRoute('/ ');
+            }}
+          >
+            Food
+          </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav className="ml-auto" navbar>

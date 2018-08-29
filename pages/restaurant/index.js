@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Card, Row, Col, CardBody, CardTitle } from 'reactstrap';
+
 import Link from '../../routes';
 import { connect } from 'react-redux';
 
@@ -11,6 +13,7 @@ const GET_RESTAURANT = gql`
       _id
       name
       description
+      picture
       type {
         name
         description
@@ -44,8 +47,25 @@ class Restaurant extends Component {
             console.log(restaurant);
             return (
               <div>
-                <h2>{restaurant.name}</h2>
-                <div>{JSON.stringify(restaurant, 2, null)}</div>
+                <Row style={{ backgroundColor: '#e2e2e2' }}>
+                  <Col>
+                    <img src={restaurant.picture} alt={restaurant.name} />
+                  </Col>
+                  <Col>
+                    <h2>{restaurant.name}</h2>
+                    <p>{restaurant.description}</p>
+                  </Col>
+                </Row>
+
+                <Row>
+                  {restaurant.products.map((products, index) => (
+                    <Card key={index}>
+                      <CardBody>
+                        <CardTitle>{products.name}</CardTitle>
+                      </CardBody>
+                    </Card>
+                  ))}
+                </Row>
               </div>
             );
           }}

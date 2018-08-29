@@ -10,6 +10,18 @@ const GET_RESTAURANTS = gql`
     allStores {
       _id
       name
+      description
+      picture
+      type {
+        name
+        description
+      }
+      products {
+        name
+        price
+        picture
+        description
+      }
     }
   }
 `;
@@ -23,9 +35,9 @@ class RestaurantList extends Component {
         //   console.log(error);
         // }
         return (
-          <div className="row justify-content-center mt-5">
+          <div className="row ">
             {data.allStores.map((store, index) => (
-              <div className="col-md-3 col-lg-2" key={index}>
+              <div className="col-md-3 col-lg-3" key={index}>
                 <RestaurantCard store={store} />
               </div>
             ))}
