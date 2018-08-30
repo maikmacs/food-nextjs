@@ -7,6 +7,10 @@ class MyDocument extends Document {
       <html>
         <Head>
           <link rel="stylesheet" href="/_next/static/style.css" />
+          <script
+            type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD70GglMCrANvggJiiAu_agXFZiBHzeeXo&libraries=places"
+          />
         </Head>
         <body>
           <Main />

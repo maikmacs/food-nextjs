@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link, Router } from '../../routes';
+
 import Layout from '../../components/Layout';
+import SearchAdress from '../../components/SearchAdress';
 
 class index extends Component {
   render() {
@@ -8,6 +10,7 @@ class index extends Component {
       <Layout>
         <div>Index</div>
         <Link route="restaurants">Lista de Restaurantes</Link>
+        <SearchAdress />
       </Layout>
     );
   }
