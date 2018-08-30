@@ -2733,7 +2733,7 @@ hoist-non-react-statics@2.5.0:
   version "2.5.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-2.5.0.tgz#d2ca2dfc19c5a91c5a6615ce8e564ef0347e2a40"
 
-hoist-non-react-statics@^1.2.0:
+hoist-non-react-statics@^1.0.3, hoist-non-react-statics@^1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/hoist-non-react-statics/-/hoist-non-react-statics-1.2.0.tgz#aa448cf0986d55cc40773b17174b7dd066cb7cfb"
 
@@ -4764,6 +4764,12 @@ react-apollo@^2.1.11:
     invariant "^2.2.2"
     lodash "^4.17.10"
     prop-types "^15.6.0"
+
+react-async-script-loader@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/react-async-script-loader/-/react-async-script-loader-0.3.0.tgz#c742b3ca25e08ba61ab7eb64371f814027692b86"
+  dependencies:
+    hoist-non-react-statics "^1.0.3"
 
 react-dom@^16.4.2:
   version "16.4.2"

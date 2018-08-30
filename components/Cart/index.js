@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { ListGroup, ListGroupItem, Badge, Button } from 'reactstrap';
+import PaypalButton from '../PaypalButton';
 
 const Cart = props => {
   const { total, items } = props;
+
   return (
     <span>
       <ListGroup>
@@ -13,11 +15,12 @@ const Cart = props => {
           </ListGroupItem>
         ))}
         <ListGroupItem active tag="a" action>
-          Total: {total} <Button>Pagar</Button>
+          Total: {total}
+        </ListGroupItem>
+        <ListGroupItem active tag="a" action>
+          {total > 0 ? <PaypalButton total={total} items={items} /> : null}
         </ListGroupItem>
       </ListGroup>
-
-      {console.log(props)}
     </span>
   );
 };

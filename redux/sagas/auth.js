@@ -27,7 +27,7 @@ export function* login(action) {
   try {
     const response = yield call(api.loginUser, payload);
     localStorage.setItem('food_token', response.data.token);
-    yield put({ type: SET_AUTH, payload: response.data.token });
+    //yield put({ type: SET_AUTH, payload: response.data.token });
     if (response.data.token) {
       console.log('Login');
       Router.push('/');
@@ -47,7 +47,7 @@ export function* register(action) {
   try {
     const response = yield call(api.createUser, payload);
     localStorage.setItem('food_token', response.data.token);
-
+    //yield put({ type: SET_AUTH, payload: response.data.token });
     Router.push('/login');
   } catch (error) {
     yield all([
