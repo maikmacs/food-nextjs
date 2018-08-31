@@ -10,12 +10,14 @@ import './styles.scss';
 class index extends Component {
   render() {
     return (
-      <main>
+      <main className={'fullHeight'}>
         <Navbar />
         <div className="indexContainer">
-          <div>Index</div>
-          <Link route="restaurants">Lista de Restaurantes</Link>
-          <SearchAdress />
+          <div className="overlay" />
+          <div className="centerDiv searchAdress">
+            <SearchAdress />
+            <Link route="restaurants">Lista de Restaurantes</Link>
+          </div>
         </div>
       </main>
     );

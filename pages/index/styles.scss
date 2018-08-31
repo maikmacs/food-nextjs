@@ -1,3 +1,17 @@
 .indexContainer {
   height: 100%;
+  background: url('https://firebasestorage.googleapis.com/v0/b/foodapp-ec7a7.appspot.com/o/back.jpg?alt=media&token=74c73b12-cd3b-4d11-a6ef-17ed0d043255');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.overlay {
+  height: 100%;
+  widows: 100%;
+  background: #00000059;
+}
+
+.searchAdress {
+  width: 100%;
+  max-width: 800px;
 }

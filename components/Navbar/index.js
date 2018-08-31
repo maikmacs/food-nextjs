@@ -33,11 +33,44 @@ class NavbarHeader extends Component {
     });
   }
 
+  componentDidMount = () => {
+    localStorage.getItem('food_token');
+    this.setState({
+      logged: localStorage.getItem('food_token') === null ? false : true
+    });
+  };
+
+  _navbar = () => (
+    <Nav className="ml-auto" navbar>
+      <Link route="login">
+        <NavItem>
+          <Button color="primary">Iniciar Sesión</Button>
+        </NavItem>
+      </Link>
+      <Link route="signup">
+        <NavItem>
+          <Button color="secondary">Regístrarse</Button>
+        </NavItem>
+      </Link>
+    </Nav>
+  );
+
   _navbarLogged = () => (
     <Nav className="ml-auto" navbar>
-      <NavItem>
-        <span>Usuario</span>
-      </NavItem>
+      <UncontrolledDropdown nav inNavbar>
+        <DropdownToggle nav caret>
+          Options
+        </DropdownToggle>
+        <DropdownMenu right>
+          <DropdownItem
+            onClick={() => {
+              Router.pushRoute('/logout ');
+            }}
+          >
+            Logout
+          </DropdownItem>
+        </DropdownMenu>
+      </UncontrolledDropdown>
     </Nav>
   );
 
@@ -50,11 +83,11 @@ class NavbarHeader extends Component {
               Router.pushRoute('/ ');
             }}
           >
-            Food
+            Food {this.state.logged}
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            {this.logged ? this._navbar() : this._navbarLogged()}
+            {this.state.logged == false ? this._navbar() : this._navbarLogged()}
           </Collapse>
         </Navbar>
       </div>

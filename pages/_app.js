@@ -9,6 +9,8 @@ import configureStore from '../redux/store';
 import { ApolloProvider } from 'react-apollo';
 import client from '../services/graphql';
 
+import './styles.scss';
+
 class MyApp extends App {
   static async getInitialProps({ Component, ctx }) {
     const pageProps = Component.getInitialProps
