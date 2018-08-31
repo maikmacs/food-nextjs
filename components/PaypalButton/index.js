@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import scriptLoader from 'react-async-script-loader';
 
 import { paypalSucess } from '../../redux/actions/paypal';
+import { Button } from 'reactstrap';
 
 class PaypalButton extends Component {
   constructor(props) {
@@ -86,18 +87,25 @@ class PaypalButton extends Component {
 
   render() {
     const { showButton } = this.state;
+    const { total, items } = this.props;
 
     return (
       <div>
-        {showButton && (
+        {/*showButton && (
           <paypal.Button.react
             commit={this.state.commit}
             env={this.state.env}
             client={this.state.client}
-            payment={(data, actions) => this.payment(data, actions)}
+             payment={(data, actions) => this.payment(data, actions)}
             onAuthorize={(data, actions) => this.onAuthorize(data, actions)}
           />
-        )}
+        )*/}
+        <Button
+          color="success"
+          href="https://sindelantal-backend.herokuapp.com/paypal/buy/"
+        >
+          Pagar
+        </Button>
       </div>
     );
   }

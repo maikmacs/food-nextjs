@@ -5,4 +5,6 @@ module.exports = routes()
   .add('login', '/login', 'login')
   .add('signup', '/signup', 'signup')
   .add('restaurants', '/restaurants', 'restaurants')
-  .add('restaurant', '/restaurant/:id', 'restaurant');
+  .add('restaurant', '/restaurant/:id', 'restaurant')
+  .add('CheckoutSuccess', '/checkout-success/:paymentId', 'CheckoutSuccess')
+  .add('CheckoutError', '/checkout-error/:paymentId', 'CheckoutError');
