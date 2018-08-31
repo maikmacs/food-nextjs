@@ -42,7 +42,7 @@ class RestaurantCard extends Component {
                 Router.pushRoute('restaurant', { id: this.state.id });
               }}
             >
-              Button
+              Ver Productos
             </Button>
           </CardBody>
         </Card>

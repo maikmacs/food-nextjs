@@ -19,13 +19,18 @@ import { connect } from 'react-redux';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
 
+import './styles.scss';
+
 const GET_RESTAURANT = gql`
   query RESTAURANT($id: ID!) {
     singleStore(id: $id) {
       _id
       name
       description
+      adress
       picture
+      phone
+      schedule
       type {
         name
         description
@@ -60,16 +65,20 @@ class Restaurant extends Component {
             //console.log(restaurant);
             return (
               <main>
-                <Row>
-                  <Col>
-                    <img src={restaurant.picture} alt={restaurant.name} />
-                  </Col>
-                  <Col>
-                    <h2>{restaurant.name}</h2>
-                    <p>{restaurant.description}</p>
-                  </Col>
-                </Row>
-
+                <div className="restaurantHeader">
+                  <Row>
+                    <Col md="3">
+                      <img src={restaurant.picture} alt={restaurant.name} />
+                    </Col>
+                    <Col>
+                      <h2>{restaurant.name}</h2>
+                      <p>{restaurant.description}</p>
+                      <p>{restaurant.adress}</p>
+                      <p>{restaurant.phone}</p>
+                      <p>{restaurant.schedule}</p>
+                    </Col>
+                  </Row>
+                </div>
                 <Row>
                   <Col>
                     <Row>

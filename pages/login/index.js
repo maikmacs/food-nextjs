@@ -32,31 +32,33 @@ class login extends Component {
   render() {
     return (
       <Layout>
-        <Form onSubmit={this.submitForm}>
-          <FormGroup>
-            <Label for={'email'}>Email</Label>
-            <Input
-              type="text"
-              name={'email'}
-              id={'email'}
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.chekInput}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for={'password'}>Contraseña</Label>
-            <Input
-              type="password"
-              name={'password'}
-              id={'password'}
-              placeholder="Contraseña"
-              value={this.state.password}
-              onChange={this.chekInput}
-            />
-          </FormGroup>
-          <Button>Submit</Button>
-        </Form>
+        <div className="centerDiv">
+          <Form onSubmit={this.submitForm}>
+            <FormGroup>
+              <Label for={'email'}>Email</Label>
+              <Input
+                type="text"
+                name={'email'}
+                id={'email'}
+                placeholder="Email"
+                value={this.state.email}
+                onChange={this.chekInput}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for={'password'}>Contraseña</Label>
+              <Input
+                type="password"
+                name={'password'}
+                id={'password'}
+                placeholder="Contraseña"
+                value={this.state.password}
+                onChange={this.chekInput}
+              />
+            </FormGroup>
+            <Button>Submit</Button>
+          </Form>
+        </div>
       </Layout>
     );
   }

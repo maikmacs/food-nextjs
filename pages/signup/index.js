@@ -62,87 +62,89 @@ class signup extends Component {
   render() {
     return (
       <Layout>
-        <Form onSubmit={this.submitForm}>
-          <FormGroup>
-            <Label for={'name'}>Nombre</Label>
-            <Input
-              type="text"
-              name={'name'}
-              id={'name'}
-              placeholder="Nombre"
-              value={this.state.name}
-              onChange={this.chekInput}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for={'last_name'}>Apellido</Label>
-            <Input
-              type="text"
-              name={'last_name'}
-              id={'last_name'}
-              placeholder="Apellido"
-              value={this.state.last_name}
-              onChange={this.chekInput}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for={'email'}>Email</Label>
-            <Input
-              type="text"
-              name={'email'}
-              id={'email'}
-              placeholder="Email"
-              value={this.state.email}
-              onChange={this.chekInput}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for={'birth_date'}>Fecha de Nacimiento</Label>
-            <Input
-              type="text"
-              name={'birth_date'}
-              id={'birth_date'}
-              placeholder="Fecha de Nacimiento"
-              value={this.state.birth_date}
-              onChange={this.chekInput}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for={'phone'}>Telefono</Label>
-            <Input
-              type="text"
-              name={'phone'}
-              id={'phone'}
-              placeholder="Telefono"
-              value={this.state.phone}
-              onChange={this.chekInput}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for={'password'}>Contraseña</Label>
-            <Input
-              type="password"
-              name={'password'}
-              id={'password'}
-              placeholder="Contraseña"
-              value={this.state.password}
-              onChange={this.chekInput}
-            />
-          </FormGroup>
-          <FormGroup>
-            <Label for={'username'}>Confirmar Contraseña</Label>
-            <Input
-              type="password"
-              name={'password_confirm'}
-              id={'password_confirm'}
-              placeholder="Confirmar Contraseña"
-              value={this.state.password_confirm}
-              onChange={this.chekInput}
-            />
-          </FormGroup>
+        <div className="centerDiv">
+          <Form onSubmit={this.submitForm}>
+            <FormGroup>
+              <Label for={'name'}>Nombre</Label>
+              <Input
+                type="text"
+                name={'name'}
+                id={'name'}
+                placeholder="Nombre"
+                value={this.state.name}
+                onChange={this.chekInput}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for={'last_name'}>Apellido</Label>
+              <Input
+                type="text"
+                name={'last_name'}
+                id={'last_name'}
+                placeholder="Apellido"
+                value={this.state.last_name}
+                onChange={this.chekInput}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for={'email'}>Email</Label>
+              <Input
+                type="text"
+                name={'email'}
+                id={'email'}
+                placeholder="Email"
+                value={this.state.email}
+                onChange={this.chekInput}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for={'birth_date'}>Fecha de Nacimiento</Label>
+              <Input
+                type="text"
+                name={'birth_date'}
+                id={'birth_date'}
+                placeholder="Fecha de Nacimiento"
+                value={this.state.birth_date}
+                onChange={this.chekInput}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for={'phone'}>Telefono</Label>
+              <Input
+                type="text"
+                name={'phone'}
+                id={'phone'}
+                placeholder="Telefono"
+                value={this.state.phone}
+                onChange={this.chekInput}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for={'password'}>Contraseña</Label>
+              <Input
+                type="password"
+                name={'password'}
+                id={'password'}
+                placeholder="Contraseña"
+                value={this.state.password}
+                onChange={this.chekInput}
+              />
+            </FormGroup>
+            <FormGroup>
+              <Label for={'username'}>Confirmar Contraseña</Label>
+              <Input
+                type="password"
+                name={'password_confirm'}
+                id={'password_confirm'}
+                placeholder="Confirmar Contraseña"
+                value={this.state.password_confirm}
+                onChange={this.chekInput}
+              />
+            </FormGroup>
 
-          <Button>Submit</Button>
-        </Form>
+            <Button>Enviar</Button>
+          </Form>
+        </div>
       </Layout>
     );
   }

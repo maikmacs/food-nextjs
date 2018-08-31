@@ -14,8 +14,9 @@ import {
   DropdownItem
 } from 'reactstrap';
 import { Link, Router } from '../../routes';
+import jwt_decode from 'jwt-decode';
+
 import './styles.scss';
-//import isAuthenticated from '../../utils/isAuthenticated';
 
 class NavbarHeader extends Component {
   constructor(props) {
@@ -24,7 +25,8 @@ class NavbarHeader extends Component {
     this.toggle = this.toggle.bind(this);
     this.state = {
       isOpen: false,
-      logged: true
+      logged: true,
+      email: ''
     };
   }
   toggle() {
@@ -34,9 +36,17 @@ class NavbarHeader extends Component {
   }
 
   componentDidMount = () => {
-    localStorage.getItem('food_token');
+    const token = localStorage.getItem('food_token');
+
+    if (token) {
+      var payload = jwt_decode(token);
+      this.setState({
+        email: payload.email
+      });
+    }
+
     this.setState({
-      logged: localStorage.getItem('food_token') === null ? false : true
+      logged: token === null ? false : true
     });
   };
 
@@ -59,7 +69,7 @@ class NavbarHeader extends Component {
     <Nav className="ml-auto" navbar>
       <UncontrolledDropdown nav inNavbar>
         <DropdownToggle nav caret>
-          Options
+          Hola {this.state.email}
         </DropdownToggle>
         <DropdownMenu right>
           <DropdownItem
