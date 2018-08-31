@@ -9,10 +9,10 @@ class Layout extends Component {
   render() {
     const { children } = this.props;
     return (
-      <div>
+      <main>
         <Navbar />
         <Container>{children}</Container>
-      </div>
+      </main>
     );
   }
 }

@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import ReactDOM from 'react-dom';
 import scriptLoader from 'react-async-script-loader';
+
+import { paypalSucess } from '../../redux/actions/paypal';
 
 class PaypalButton extends Component {
   constructor(props) {
@@ -74,8 +77,10 @@ class PaypalButton extends Component {
     });
   }
   onAuthorize(data, actions) {
+    const { sagaSucess } = this.props;
+
     return actions.payment.execute().then(function(paymentData) {
-      console.log('SUCESSS', paymentData);
+      sagaSucess(paymentData);
     });
   }
 
@@ -98,6 +103,15 @@ class PaypalButton extends Component {
   }
 }
 
+const mapStateToProps = state => ({});
+
+const mapDispatchToProps = dispatch => ({
+  sagaSucess: payload => dispatch(paypalSucess(payload))
+});
+
 export default scriptLoader('https://www.paypalobjects.com/api/checkout.js')(
-  PaypalButton
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(PaypalButton)
 );

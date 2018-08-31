@@ -14,6 +14,8 @@ import {
   DropdownItem
 } from 'reactstrap';
 import { Link, Router } from '../../routes';
+import './styles.scss';
+//import isAuthenticated from '../../utils/isAuthenticated';
 
 class NavbarHeader extends Component {
   constructor(props) {
@@ -21,7 +23,8 @@ class NavbarHeader extends Component {
 
     this.toggle = this.toggle.bind(this);
     this.state = {
-      isOpen: false
+      isOpen: false,
+      logged: true
     };
   }
   toggle() {
@@ -29,10 +32,19 @@ class NavbarHeader extends Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  _navbarLogged = () => (
+    <Nav className="ml-auto" navbar>
+      <NavItem>
+        <span>Usuario</span>
+      </NavItem>
+    </Nav>
+  );
+
   render() {
     return (
       <div>
-        <Navbar color="light" light expand="md">
+        <Navbar light expand="md">
           <NavbarBrand
             onClick={() => {
               Router.pushRoute('/ ');
@@ -42,18 +54,7 @@ class NavbarHeader extends Component {
           </NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <Link route="login">
-                  <Button color="primary">Iniciar Sesión</Button>
-                </Link>
-              </NavItem>
-              <NavItem>
-                <Link route="signup">
-                  <Button color="secondary">Regístrarse</Button>
-                </Link>
-              </NavItem>
-            </Nav>
+            {this.logged ? this._navbar() : this._navbarLogged()}
           </Collapse>
         </Navbar>
       </div>
