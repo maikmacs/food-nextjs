@@ -1,10 +1,10 @@
 {
   "name": "sindelantal-nextjs",
   "scripts": {
-    "dev": "node server.js -p $PORT",
+    "dev": "node server.js -p",
     "build": "next build",
     "heroku-postbuild": "next build",
-    "start": "node server.js -p $PORT"
+    "start": "node server.js -p"
   },
   "dependencies": {
     "@zeit/next-sass": "^0.2.0",
